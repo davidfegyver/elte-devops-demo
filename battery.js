@@ -1,6 +1,9 @@
+const SEGMENTS = 10;
+
 export function formatBattery(percent) {
-  // TODO: Return a ten-segment ASCII bar and percentage.
-  // Round to the nearest segment. Only integers 0 through 100 are valid.
-  // Missing or invalid input must return "Unavailable".
-  return "Unavailable";
+  if (!Number.isInteger(percent) || percent < 0 || percent > 100) {
+    return "Unavailable";
+  }
+  const filled = Math.round((percent / 100) * SEGMENTS);
+  return `[${"#".repeat(filled)}${"-".repeat(SEGMENTS - filled)}] ${percent}%`;
 }

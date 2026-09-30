@@ -1,8 +1,11 @@
+import { formatBattery } from "./battery.js";
+
 export const truck = {
   id: "67",
   location: "Lidl Blaha",
   city: "Budapest, Hungary",
   latency: 34,
+  batteryPercent: 72,
 };
 
 export function renderTruck(vehicle) {
@@ -15,6 +18,8 @@ export function renderTruck(vehicle) {
       <dd>Connected</dd>
       <dt>Latency</dt>
       <dd>${vehicle.latency} ms</dd>
+      <dt>Battery</dt>
+      <dd>${formatBattery(vehicle.batteryPercent)}</dd>
     </dl>
   `;
 }
